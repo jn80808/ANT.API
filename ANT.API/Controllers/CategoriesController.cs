@@ -1,6 +1,7 @@
 ﻿using ANT.API.Data;
 using ANT.API.Models.Domain;
 using ANT.API.Models.DTO;
+using ANT.API.Repositories.Interfacte;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -12,14 +13,15 @@ namespace ANT.API.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly ICategoryRepository categoryReposiory;
 
-        public CategoriesController(ApplicationDbContext dbContext)
+        public CategoriesController(ICategoryRepository categoryReposiory)
         {
-            this.dbContext = dbContext;
+            this.categoryReposiory = categoryReposiory;
         }
 
-        //
+
+        //Post
         [HttpPost]
         public async Task<IActionResult>CreateCategory(CreateCategoryRequestDTO request)
         {
@@ -35,6 +37,8 @@ namespace ANT.API.Controllers
             //await dbContext.Segment.AddAsync(segment);
             //await dbContext.SaveChangesAsync();
 
+            await categoryReposiory.CreateAsyn(category);
+
 
             // Domain model to DTO 
             var response = new CategoryDto
@@ -47,6 +51,8 @@ namespace ANT.API.Controllers
             return Ok(response);
 
         }
+
+
      
     }
 

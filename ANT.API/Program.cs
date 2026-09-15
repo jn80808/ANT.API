@@ -1,4 +1,6 @@
 using ANT.API.Data;
+using ANT.API.Repositories.Implementation;
+using ANT.API.Repositories.Interfacte;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         builder.Configuration.GetConnectionString("AntPostConnectionStrings")
     ));
 
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 
 var app = builder.Build();
