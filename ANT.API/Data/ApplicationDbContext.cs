@@ -17,7 +17,7 @@ namespace ANT.API.Data
 
         public  DbSet <Category> Categories  { get; set; }
 
-
+        public DbSet<Segment> Segment { get; set; }
 
 
 

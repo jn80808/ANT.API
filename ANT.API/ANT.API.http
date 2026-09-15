@@ -8,3 +8,7 @@ Accept: application/json
 GET {{ANT.API_HostAddress}}/weatherforecast
 
 ###
+
+GET {{ANT.API_HostAddress}}/weatherforecast
+
+###

@@ -24,13 +24,14 @@ namespace ANT.API.Controllers
         public async Task<IActionResult>CreateCategory(CreateCategoryRequestDTO request)
         {
 
-            //Map DTO to Domain Model 
+            //Map DTO to Domain Model : api -> dto -> domain
             var category = new Category
             {
-                Name = request.Name,
+                Name = request.Name, //domain = dto.value 
                 UrlHandle = request.UrlHandle
             };
 
+            //db save 
             await dbContext.Categories.AddAsync(category);
             await dbContext.SaveChangesAsync();
 
