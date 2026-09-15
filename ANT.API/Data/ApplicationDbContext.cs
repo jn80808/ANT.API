@@ -19,7 +19,7 @@ namespace ANT.API.Data
 
         public DbSet<Segment> Segment { get; set; }
 
-
+        public DbSet<Division> Division { get; set; }
 
 
 

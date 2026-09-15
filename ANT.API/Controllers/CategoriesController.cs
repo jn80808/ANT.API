@@ -31,9 +31,9 @@ namespace ANT.API.Controllers
                 UrlHandle = request.UrlHandle
             };
 
-            //db save 
-            await dbContext.Categories.AddAsync(category);
-            await dbContext.SaveChangesAsync();
+            //db save  -- will add in implementation repository
+            //await dbContext.Segment.AddAsync(segment);
+            //await dbContext.SaveChangesAsync();
 
 
             // Domain model to DTO 
