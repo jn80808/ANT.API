@@ -15,13 +15,15 @@ namespace ANT.API.Controllers
     {
         private readonly ICategoryRepository categoryReposiory;
 
+
+        //Controller -> DTO -> Repository
         public CategoriesController(ICategoryRepository categoryReposiory)
         {
             this.categoryReposiory = categoryReposiory;
         }
 
 
-        //Post
+        //Post 
         [HttpPost]
         public async Task<IActionResult>CreateCategory(CreateCategoryRequestDTO request)
         {
@@ -32,10 +34,6 @@ namespace ANT.API.Controllers
                 Name = request.Name, //domain = dto.value 
                 UrlHandle = request.UrlHandle
             };
-
-            //db save  -- will add in implementation repository
-            //await dbContext.Segment.AddAsync(segment);
-            //await dbContext.SaveChangesAsync();
 
             await categoryReposiory.CreateAsyn(category);
 
