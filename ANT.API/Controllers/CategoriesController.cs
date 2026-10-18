@@ -1,6 +1,7 @@
 ﻿using ANT.API.Data;
 using ANT.API.Models.Domain;
 using ANT.API.Models.DTO;
+using ANT.API.Repositories.Implementation;
 using ANT.API.Repositories.Interfacte;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,30 @@ namespace ANT.API.Controllers
             return Ok(response);
 
         }
+
+        //HTTPGET 
+        //GET : /api/ categories
+        [HttpGet]
+        public async Task <IActionResult > GetAllCategories()
+        {
+            var categories = await categoryReposiory.GetAllAsync();
+
+            //Map Domain model to DTO 
+            var response = new List<CategoryDto>();
+            foreach (var category in categories)
+            {
+                response.Add(new CategoryDto
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                    UrlHandle = category.UrlHandle
+                });
+
+            }
+            return Ok(response);
+
+        }
+
 
 
      

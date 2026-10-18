@@ -8,6 +8,8 @@ namespace ANT.API.Repositories.Interfacte
         //definition of a method for Create Category Method 
         Task<Category> CreateAsyn(Category category);
 
+        Task<IEnumerable<Category>> GetAllAsync();
+
 
     }
 }
