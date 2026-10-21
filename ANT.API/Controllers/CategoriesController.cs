@@ -75,19 +75,48 @@ namespace ANT.API.Controllers
 
 
         //GET : https://localhost:7001/api/Categories/{id}
-
         [HttpGet]
         [Route("{id:Guid}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetCategoryById([FromRoute] Guid id)
         {
-            
-            return Ok();
+            var existingCategory = await categoryReposiory.GetById(id);
+
+            if (existingCategory is null)
+            {
+                return NotFound();
+            }
+
+            var response = new CategoryDto
+            {
+                Id = existingCategory.Id,
+                Name = existingCategory.Name,
+                UrlHandle = existingCategory.UrlHandle
+            };
+
+            return Ok(response);
         }
 
 
+        [HttpGet("by-name")]
+            public async Task<IActionResult> GetCategoryByName([FromQuery] string name)
+            {
+            var existingCategory =
+                await categoryReposiory.GetByName(name);
 
+                if (existingCategory is null)
+                {
+                    return NotFound();
+                }
 
+                var response = new CategoryDto
+                {
+ 
+                    Name = existingCategory.Name,
+                    UrlHandle = existingCategory.UrlHandle
+                };
 
+                return Ok(response);
+            }
 
 
     }

@@ -9,4 +9,15 @@
         public string UrlHandle { get; set; }
 
     }
+
+    //public class CategoryNameDto
+    //{
+
+
+    //    public string Name { get; set; }
+
+    //    public string UrlHandle { get; set; }
+
+    //}
+
 }

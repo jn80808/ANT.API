@@ -1,4 +1,5 @@
 ﻿using ANT.API.Models.Domain;
+using ANT.API.Models.DTO;
 
 namespace ANT.API.Repositories.Interfacte
 {
@@ -10,6 +11,11 @@ namespace ANT.API.Repositories.Interfacte
 
         Task<IEnumerable<Category>> GetAllAsync();
 
+        Task<Category?> GetById(Guid id);
 
+
+
+        // for SP
+        Task<Category?> GetByName(string name);
     }
 }
