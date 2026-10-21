@@ -24,7 +24,7 @@ namespace ANT.API.Controllers
         }
 
 
-        //Post 
+        //POST 
         [HttpPost]
         public async Task<IActionResult>CreateCategory(CreateCategoryRequestDTO request)
         {
@@ -51,8 +51,7 @@ namespace ANT.API.Controllers
 
         }
 
-        //HTTPGET 
-        //GET : /api/ categories
+        //GET : /api/ categories : https://localhost:7001/api/Categories
         [HttpGet]
         public async Task <IActionResult > GetAllCategories()
         {
@@ -75,8 +74,22 @@ namespace ANT.API.Controllers
         }
 
 
+        //GET : https://localhost:7001/api/Categories/{id}
 
-     
+        [HttpGet]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            
+            return Ok();
+        }
+
+
+
+
+
+
+
     }
 
 }
