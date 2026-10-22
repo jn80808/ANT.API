@@ -22,7 +22,15 @@ namespace ANT.API.Data
         public DbSet<Division> Division { get; set; }
 
 
+        public DbSet<CategoryNameResult> CategoryNameResults { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<CategoryNameResult>()
+                .HasNoKey();
+        }
 
     }
 }

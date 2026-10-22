@@ -26,7 +26,7 @@ namespace ANT.API.Controllers
 
         //POST 
         [HttpPost]
-        public async Task<IActionResult>CreateCategory(CreateCategoryRequestDTO request)
+        public async Task<IActionResult> CreateCategory(CreateCategoryRequestDTO request)
         {
 
             //Map DTO to Domain Model : api -> dto -> domain
@@ -53,7 +53,7 @@ namespace ANT.API.Controllers
 
         //GET : /api/ categories : https://localhost:7001/api/Categories
         [HttpGet]
-        public async Task <IActionResult > GetAllCategories()
+        public async Task<IActionResult> GetAllCategories()
         {
             var categories = await categoryReposiory.GetAllAsync();
 
@@ -96,28 +96,22 @@ namespace ANT.API.Controllers
             return Ok(response);
         }
 
+        //GET :
 
         [HttpGet("by-name")]
-            public async Task<IActionResult> GetCategoryByName([FromQuery] string name)
-            {
+        public async Task<IActionResult> GetCategoryByName(
+            [FromQuery] string name)
+        {
             var existingCategory =
                 await categoryReposiory.GetByName(name);
 
-                if (existingCategory is null)
-                {
-                    return NotFound();
-                }
-
-                var response = new CategoryDto
-                {
- 
-                    Name = existingCategory.Name,
-                    UrlHandle = existingCategory.UrlHandle
-                };
-
-                return Ok(response);
+            if (existingCategory is null)
+            {
+                return NotFound();
             }
 
+            return Ok(existingCategory);
+        }
 
     }
 

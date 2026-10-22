@@ -7,7 +7,13 @@
         public string Name { get; set; }
 
         public string UrlHandle { get; set; }
-
-
     }
+
+    public class CategoryNameResult
+    {
+        public string Name { get; set; }
+
+        public string UrlHandle { get; set; }
+    }
+
 }

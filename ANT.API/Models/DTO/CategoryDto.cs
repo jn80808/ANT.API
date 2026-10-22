@@ -10,14 +10,14 @@
 
     }
 
-    //public class CategoryNameDto
-    //{
+    public class CategoryNameDto
+    {
 
 
-    //    public string Name { get; set; }
+        public string Name { get; set; }
 
-    //    public string UrlHandle { get; set; }
+        public string UrlHandle { get; set; }
 
-    //}
+    }
 
 }

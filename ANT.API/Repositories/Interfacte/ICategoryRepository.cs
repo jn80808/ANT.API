@@ -16,6 +16,6 @@ namespace ANT.API.Repositories.Interfacte
 
 
         // for SP
-        Task<Category?> GetByName(string name);
+        Task<CategoryNameDto?> GetByName(string name);
     }
 }

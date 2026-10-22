@@ -1,5 +1,6 @@
 ﻿using ANT.API.Data;
 using ANT.API.Models.Domain;
+using ANT.API.Models.DTO;
 using ANT.API.Repositories.Interfacte;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,15 +38,28 @@ namespace ANT.API.Repositories.Implementation
         }
 
 
-        public async Task<Category?> GetByName(string name)
+
+        public async Task<CategoryNameDto?> GetByName(string name)
         {
-            var categories = await dbContext.Categories
+            var categories = await dbContext.CategoryNameResults
                 .FromSqlInterpolated(
                     $"EXEC dbo.PRC_GetBY_Name @Name={name}")
                 .ToListAsync();
 
-            return categories.FirstOrDefault();
+            var category = categories.FirstOrDefault();
+
+            if (category is null)
+            {
+                return null;
+            }
+
+            return new CategoryNameDto
+            {
+                Name = category.Name,
+                UrlHandle = category.UrlHandle
+            };
         }
-            
+
+
     }
 }
