@@ -42,9 +42,7 @@ namespace ANT.API.Repositories.Implementation
         public async Task<CategoryNameDto?> GetByName(string name)
         {
             var categories = await dbContext.CategoryNameResults
-                .FromSqlInterpolated(
-                    $"EXEC dbo.PRC_GetBY_Name @Name={name}")
-                .ToListAsync();
+                .FromSqlInterpolated( $"EXEC dbo.PRC_GetBY_Name @Name={name}").ToListAsync();
 
             var category = categories.FirstOrDefault();
 

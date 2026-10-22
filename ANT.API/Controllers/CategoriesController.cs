@@ -96,14 +96,11 @@ namespace ANT.API.Controllers
             return Ok(response);
         }
 
-        //GET :
-
+        //GET :https://localhost:7001/api/Categories/by-name?@NAME
         [HttpGet("by-name")]
-        public async Task<IActionResult> GetCategoryByName(
-            [FromQuery] string name)
+        public async Task<IActionResult> GetCategoryByName([FromQuery] string name)
         {
-            var existingCategory =
-                await categoryReposiory.GetByName(name);
+            var existingCategory =await categoryReposiory.GetByName(name);
 
             if (existingCategory is null)
             {
