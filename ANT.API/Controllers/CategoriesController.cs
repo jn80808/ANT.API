@@ -97,7 +97,7 @@ namespace ANT.API.Controllers
         }
 
         //GET :https://localhost:7001/api/Categories/by-name?@NAME
-        [HttpGet("by-name")]
+        [HttpGet("GetByName")]
         public async Task<IActionResult> GetCategoryByName([FromQuery] string name)
         {
             var existingCategory =await categoryReposiory.GetByName(name);
